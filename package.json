@@ -23,6 +23,7 @@
     "@angular/router": "~7.1.0",
     "angular-audio": "^1.7.3",
     "core-js": "^2.5.4",
+    "jquery": "^3.3.1",
     "ngx-soundmanager2": "^0.2.3",
     "rxjs": "~6.3.3",
     "soundmanager2": "^2.97.20170602",

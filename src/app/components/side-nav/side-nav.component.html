@@ -1,13 +1,19 @@
 <mat-sidenav-container class="sidenav-container">
-  <mat-sidenav #drawer class="sidenav" fixedInViewport="true"
-      [attr.role]="(isHandset$ | async) ? 'dialog' : 'navigation'"
-      [mode]="(isHandset$ | async) ? 'over' : 'side'"
-      [opened]="!(isHandset$ | async)">
+  <mat-sidenav #drawer class="sidenav" fixedInViewport="true" [attr.role]="(isHandset$ | async) ? 'dialog' : 'navigation'"
+    [mode]="(isHandset$ | async) ? 'over' : 'side'" [opened]="!(isHandset$ | async)">
     <mat-toolbar><a class="home" href="home">Home</a></mat-toolbar>
     <mat-nav-list>
+      <div *ngIf="authed; else pleaseAuth">
       <p class="title">Your Treasure</p>
       <a mat-list-item href="playlist/index">Playlist</a>
       <a mat-list-item href="#">Song</a>
+    </div>
+    <ng-template #pleaseAuth>
+      <h1>Ahoy Matey!</h1>
+      <p>Welcome to Reb Beard Beats!</p>
+      <p>Seems like ye new round here, or perhaps ye ain't logged in.</p>
+      <p>How bout ya go on down an register or sign on in!</p>
+    </ng-template>
       <br>
       <br>
       <br>
@@ -24,17 +30,20 @@
       <br>
       <br>
       <hr />
-      <a mat-list-item href="newplaylist/create">Add New Playlist</a>
-      <a mat-list-item href="playlist-collection/create">Add New Song</a>
-      <a mat-list-item href="playlist/assign">Add Song to Playlist</a>
-      <br>
-      <a mat-list-item href="login">Login</a>
-      <a mat-list-item href="register">Sign Up</a>
+      <div *ngIf="authed; else signUp">
+        <a mat-list-item href="newplaylist/create">Add New Playlist</a>
+        <a mat-list-item href="playlist-collection/create">Add New Song</a>
+        <a mat-list-item href="playlist/assign">Add Song to Playlist</a>
+      </div>
+      <ng-template #signUp>
+        <a mat-list-item href="login">Login</a>
+        <a mat-list-item href="register">Sign Up</a>
+      </ng-template>
       <br>
       <br>
     </mat-nav-list>
   </mat-sidenav>
-  
+
   <mat-sidenav-content>
     <!-- Router Allows to show content of what page we try to navigate to -->
     <router-outlet></router-outlet>

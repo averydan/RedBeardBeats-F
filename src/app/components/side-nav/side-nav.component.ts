@@ -15,6 +15,16 @@ export class SideNavComponent {
       map(result => result.matches)
     );
 
-  constructor(private breakpointObserver: BreakpointObserver) {}
+    authed: any;
+
+  constructor(private breakpointObserver: BreakpointObserver) {
+    if (sessionStorage.getItem('pirate_ship') !== null) {
+      this.authed = true;
+    }
+    else {
+      this.authed = false;
+    }
+    console.log(this.authed);
+  }
 
 }
