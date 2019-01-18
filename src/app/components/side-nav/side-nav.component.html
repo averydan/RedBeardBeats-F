@@ -1,8 +1,10 @@
 <mat-sidenav-container class="sidenav-container">
-  <mat-sidenav #drawer class="sidenav" fixedInViewport="true" [attr.role]="(isHandset$ | async) ? 'dialog' : 'navigation'"
-    [mode]="(isHandset$ | async) ? 'over' : 'side'" [opened]="!(isHandset$ | async)">
-    <mat-toolbar><a class="home" href="home">Home</a></mat-toolbar>
-    <mat-nav-list>
+  <mat-sidenav #drawer class="sidenav" fixedInViewport="true"
+      [attr.role]="(isHandset$ | async) ? 'dialog' : 'navigation'"
+      [mode]="(isHandset$ | async) ? 'over' : 'side'"
+      [opened]="!(isHandset$ | async)">
+    <mat-toolbar><a class="home" routerLink="home">Home</a></mat-toolbar>
+     <mat-nav-list>
       <div *ngIf="authed; else pleaseAuth">
       <p class="title">Your Treasure</p>
       <a mat-list-item href="playlist/index">Playlist</a>
